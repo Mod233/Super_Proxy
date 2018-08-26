@@ -5,7 +5,7 @@ from struct import *
 
 
 def handle_con(socketclient, addr):
-    socketclient.send(addr)
+    socketclient.send("client addr is " + str(addr))
 
 
 def main():
@@ -17,8 +17,8 @@ def main():
     try:
         while True:
             sock, addr = socketsever.accept()
-            print("addr type is %s" % type(addr))
-            print("connecting from %s" % addr)
+            # print("addr type is %s" % type(addr))
+            print "connecting from ", addr
             t = Thread(target=handle_con, args=(sock, addr))
             t.start()
     except error as e:
